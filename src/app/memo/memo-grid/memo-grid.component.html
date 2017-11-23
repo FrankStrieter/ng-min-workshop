@@ -1,0 +1,5 @@
+<tr-memo-card
+  *ngFor="let memosElement of memosInput"
+  [memo]="memosElement"
+  (delete)=removeMemo($event)>
+</tr-memo-card>

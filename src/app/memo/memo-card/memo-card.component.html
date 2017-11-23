@@ -1,0 +1,8 @@
+<mat-card>
+<h2>{{memo.title}}</h2>
+<p [innerHTML]="memo.text"></p>
+<ul>
+<li *ngFor="let todo of memo.todos" [class.scoredout]="todo.checked">{{todo.task}}</li>
+</ul>
+<button mat-raised-button (click)="removeMemo(memo)">remove</button>
+</mat-card>

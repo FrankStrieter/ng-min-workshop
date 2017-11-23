@@ -1,0 +1,34 @@
+<mat-card>
+  <form novalidate
+    [formGroup]="memoForm"
+    (ngSubmit)="emitCreatedBook(form)"
+    #form='ngForm'>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="title"
+        type="text"
+        placeholder="Add note"
+        (focus)="setFocus(true)">
+      <mat-error *ngIf="memoForm.controls.title.hasError('required')">
+        Title is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="memoForm.controls.title.hasError('minlength')">
+        Title needs at least <strong>{{ memoForm.controls.title.errors.minlength.requiredLength }}</strong> characters
+      </mat-error>
+    </mat-form-field>
+    <div *ngIf="componentHasFocus">
+    <mat-form-field>
+      <textarea
+        matInput
+        trLinkify
+        formControlName="text"
+        type="text"
+        placeholder="text">
+    </textarea>
+  </mat-form-field>
+    <button mat-button [disabled]="memoForm.invalid">Speichern</button>
+    <button mat-button (click)="abort()">Abbrechen</button>
+    </div>
+  </form>
+</mat-card>
